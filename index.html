@@ -3,43 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Healthcare Medical Laboratory - Mysore</title>
+  <title>Healthcare Medical Laboratory - Mysore & Harihara</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .navbar { background: #1e3a5f; color: white; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    
+    /* Navbar */
+    .navbar { background: #1e3a5f; color: white; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
     .navbar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
     .navbar h1 { font-size: 1.5rem; }
-    .nav-links a { color: white; text-decoration: none; margin-left: 2rem; font-weight: 500; }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; }
     .nav-links a:hover { color: #f4c430; }
-    .hero { background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%); color: white; padding: 150px 20px 100px; text-align: center; }
-    .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; }
-    .location { font-size: 1.3rem; margin-bottom: 0.5rem; }
-    .tagline { font-size: 1.5rem; color: #f4c430; }
+    
+    /* Hero Section */
+    .hero { background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%); color: white; padding: 150px 20px 80px; text-align: center; }
+    .hero h1 { font-size: 3rem; margin-bottom: 1rem; font-weight: 700; }
+    .hero .subtitle { font-size: 1.3rem; margin-bottom: 2rem; color: #f4c430; }
+    .locations-badge { display: flex; justify-content: center; gap: 2rem; margin: 2rem 0; flex-wrap: wrap; }
+    .location-item { background: rgba(255,255,255,0.2); padding: 1rem 2rem; border-radius: 50px; font-size: 1.1rem; backdrop-filter: blur(10px); }
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+    .btn { padding: 14px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s; display: inline-block; border: none; cursor: pointer; font-size: 1rem; }
+    .btn-primary { background: #f4c430; color: #1e3a5f; }
+    .btn-primary:hover { background: #e0b020; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(244,196,48,0.4); }
+    .btn-secondary { background: transparent; color: white; border: 2px solid white; }
+    .btn-secondary:hover { background: white; color: #1e3a5f; }
+    
+    /* Features */
+    .features { padding: 60px 20px; background: #f9fafb; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .feature-box { background: white; padding: 2rem; border-radius: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: transform 0.3s; }
+    .feature-box:hover { transform: translateY(-8px); }
+    .feature-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .feature-box h3 { color: #1e3a5f; margin-bottom: 0.5rem; font-size: 1.2rem; }
+    .feature-box p { color: #666; font-size: 0.95rem; }
+    
+    /* Tests Section */
     .tests-section { padding: 80px 20px; background: white; }
-    .tests-section h2 { text-align: center; color: #1e3a5f; font-size: 2.5rem; margin-bottom: 3rem; }
-    .tests-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    .test-card { background: #f9fafb; padding: 2rem; border-radius: 12px; border-left: 5px solid #2563eb; transition: transform 0.3s; }
-    .test-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-    .test-card h3 { color: #1e3a5f; margin-bottom: 1rem; font-size: 1.3rem; }
-    .test-card ul { list-style: none; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-header h2 { color: #1e3a5f; font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .section-header p { color: #666; font-size: 1.1rem; }
+    .tests-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+    .test-card { background: #f9fafb; padding: 2rem; border-radius: 15px; border-left: 5px solid #2563eb; transition: all 0.3s; position: relative; }
+    .test-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); border-left-color: #f4c430; }
+    .test-card h3 { color: #1e3a5f; margin-bottom: 1rem; font-size: 1.4rem; }
+    .test-card ul { list-style: none; margin-bottom: 1.5rem; }
     .test-card li { padding: 0.6rem 0; border-bottom: 1px solid #e5e7eb; color: #555; }
     .test-card li:before { content: '✓'; color: #2563eb; font-weight: bold; margin-right: 10px; }
-    .contact-section { padding: 80px 20px; background: #f9fafb; }
-    .contact-section h2 { text-align: center; color: #1e3a5f; font-size: 2.5rem; margin-bottom: 3rem; }
-    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-bottom: 3rem; }
-    .team-card { background: white; padding: 2rem; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    .team-icon { font-size: 4rem; margin-bottom: 1rem; }
-    .team-card h3 { color: #1e3a5f; margin-bottom: 0.5rem; font-size: 1.5rem; }
-    .role { color: #2563eb; font-weight: 600; margin-bottom: 1rem; }
-    .team-card p { margin: 0.5rem 0; }
-    .info-box { background: white; padding: 2rem; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    .info-box p { margin: 1rem 0; font-size: 1.1rem; }
-    footer { background: #1e3a5f; color: white; padding: 2rem 20px; text-align: center; }
+    .test-price { font-size: 1.5rem; color: #2563eb; font-weight: 700; margin: 1rem 0; }
+    .book-btn { width: 100%; padding: 12px; background: #2563eb; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.3s; }
+    .book-btn:hover { background: #1e40af; }
+    
+    /* Locations Section */
+    .locations-section { padding: 80px 20px; background: #f9fafb; }
+    .locations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; margin-top: 3rem; }
+    .location-card { background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+    .location-card h3 { color: #1e3a5f; font-size: 2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
+    .location-info { margin: 1rem 0; }
+    .location-info p { margin: 0.8rem 0; font-size: 1.05rem; display: flex; align-items: center; gap: 10px; }
+    .location-info strong { color: #1e3a5f; min-width: 100px; }
+    
+    /* Team Section */
+    .team-section { padding: 80px 20px; background: white; }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 3rem; }
+    .team-card { background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%); padding: 2.5rem; border-radius: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: transform 0.3s; }
+    .team-card:hover { transform: translateY(-8px); }
+    .team-icon { font-size: 5rem; margin-bottom: 1rem; }
+    .team-card h3 { color: #1e3a5f; margin-bottom: 0.5rem; font-size: 1.6rem; }
+    .role { color: #2563eb; font-weight: 600; margin-bottom: 1.5rem; font-size: 1.1rem; }
+    .team-card p { margin: 0.5rem 0; color: #555; }
+    
+    /* Booking Section */
+    .booking-section { padding: 80px 20px; background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%); color: white; text-align: center; }
+    .booking-section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .booking-section p { font-size: 1.2rem; margin-bottom: 2rem; }
+    .booking-form { max-width: 600px; margin: 0 auto; background: white; padding: 2.5rem; border-radius: 15px; }
+    .form-group { margin-bottom: 1.5rem; text-align: left; }
+    .form-group label { display: block; color: #1e3a5f; font-weight: 600; margin-bottom: 0.5rem; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; font-family: inherit; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: #2563eb; }
+    
+    /* Footer */
+    footer { background: #1a2f4a; color: white; padding: 3rem 20px 1.5rem; }
+    .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+    .footer-section h3 { color: #f4c430; margin-bottom: 1rem; }
+    .footer-section p { margin: 0.5rem 0; }
+    .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    
     @media (max-width: 768px) {
       .hero h1 { font-size: 2rem; }
-      .tests-grid, .team-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 1rem; }
+      .locations-badge { flex-direction: column; align-items: center; }
+      .tests-grid, .team-grid, .locations-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -49,7 +105,9 @@
       <h1>🔬 Healthcare Medical Laboratory</h1>
       <div class="nav-links">
         <a href="#tests">Tests</a>
-        <a href="#contact">Contact</a>
+        <a href="#locations">Locations</a>
+        <a href="#team">Team</a>
+        <a href="#book">Book Now</a>
       </div>
     </div>
   </nav>
@@ -57,14 +115,51 @@
   <section class="hero">
     <div class="container">
       <h1>Healthcare Medical Laboratory Service</h1>
-      <p class="location">📍 Mysore, Karnataka</p>
-      <p class="tagline">Accurate Diagnostics, Trusted Results</p>
+      <p class="subtitle">Accurate Diagnostics, Trusted Results</p>
+      <div class="locations-badge">
+        <div class="location-item">📍 Mysore, Karnataka</div>
+        <div class="location-item">📍 Harihara, Karnataka</div>
+      </div>
+      <div class="cta-buttons">
+        <a href="#book" class="btn btn-primary">Book Home Collection</a>
+        <a href="#tests" class="btn btn-secondary">View All Tests</a>
+      </div>
+    </div>
+  </section>
+  
+  <section class="features">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-box">
+          <div class="feature-icon">🏠</div>
+          <h3>Home Sample Collection</h3>
+          <p>Convenient doorstep service</p>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon">⚡</div>
+          <h3>Quick Reports</h3>
+          <p>Fast & accurate results</p>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon">✅</div>
+          <h3>Certified Lab</h3>
+          <p>Accredited & trusted</p>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon">💰</div>
+          <h3>Affordable Pricing</h3>
+          <p>Best rates guaranteed</p>
+        </div>
+      </div>
     </div>
   </section>
   
   <section id="tests" class="tests-section">
     <div class="container">
-      <h2>Comprehensive Blood Test Services</h2>
+      <div class="section-header">
+        <h2>Comprehensive Blood Test Packages</h2>
+        <p>Choose from our wide range of diagnostic tests</p>
+      </div>
       <div class="tests-grid">
         <div class="test-card">
           <h3>💓 Complete Blood Count (CBC)</h3>
@@ -73,17 +168,22 @@
             <li>White Blood Cell Count</li>
             <li>Platelet Count</li>
             <li>Hemoglobin Levels</li>
+            <li>Hematocrit</li>
           </ul>
+          <div class="test-price">₹299</div>
+          <button class="book-btn" onclick="bookTest('CBC')">Book Now</button>
         </div>
         
         <div class="test-card">
-          <h3>🧬 Blood Sugar Tests</h3>
+          <h3>🧬 Blood Sugar Package</h3>
           <ul>
             <li>Fasting Blood Sugar</li>
             <li>Random Blood Sugar</li>
             <li>HbA1c Test</li>
             <li>Glucose Tolerance Test</li>
           </ul>
+          <div class="test-price">₹499</div>
+          <button class="book-btn" onclick="bookTest('Blood Sugar')">Book Now</button>
         </div>
         
         <div class="test-card">
@@ -93,7 +193,10 @@
             <li>HDL (Good Cholesterol)</li>
             <li>LDL (Bad Cholesterol)</li>
             <li>Triglycerides</li>
+            <li>VLDL Cholesterol</li>
           </ul>
+          <div class="test-price">₹599</div>
+          <button class="book-btn" onclick="bookTest('Lipid Profile')">Book Now</button>
         </div>
         
         <div class="test-card">
@@ -102,8 +205,10 @@
             <li>Creatinine</li>
             <li>Blood Urea Nitrogen (BUN)</li>
             <li>Uric Acid</li>
-            <li>Electrolytes</li>
+            <li>Electrolytes (Na, K, Cl)</li>
           </ul>
+          <div class="test-price">₹699</div>
+          <button class="book-btn" onclick="bookTest('Kidney Function')">Book Now</button>
         </div>
         
         <div class="test-card">
@@ -111,27 +216,94 @@
           <ul>
             <li>SGOT/AST</li>
             <li>SGPT/ALT</li>
-            <li>Bilirubin</li>
+            <li>Total & Direct Bilirubin</li>
             <li>Alkaline Phosphatase</li>
+            <li>Total Protein & Albumin</li>
           </ul>
+          <div class="test-price">₹799</div>
+          <button class="book-btn" onclick="bookTest('Liver Function')">Book Now</button>
         </div>
         
         <div class="test-card">
           <h3>🦋 Thyroid Profile</h3>
           <ul>
             <li>TSH (Thyroid Stimulating Hormone)</li>
-            <li>T3 & T4</li>
-            <li>Free T3 & T4</li>
-            <li>Thyroid Antibodies</li>
+            <li>T3 (Triiodothyronine)</li>
+            <li>T4 (Thyroxine)</li>
+            <li>Free T3 & Free T4</li>
           </ul>
+          <div class="test-price">₹899</div>
+          <button class="book-btn" onclick="bookTest('Thyroid Profile')">Book Now</button>
+        </div>
+        
+        <div class="test-card">
+          <h3>🏥 Full Body Checkup</h3>
+          <ul>
+            <li>Complete Blood Count</li>
+            <li>Lipid Profile</li>
+            <li>Liver & Kidney Function</li>
+            <li>Thyroid Profile</li>
+            <li>Blood Sugar Tests</li>
+          </ul>
+          <div class="test-price">₹1,999</div>
+          <button class="book-btn" onclick="bookTest('Full Body Checkup')">Book Now</button>
+        </div>
+        
+        <div class="test-card">
+          <h3>🩺 Senior Citizen Package</h3>
+          <ul>
+            <li>All Full Body Tests</li>
+            <li>Vitamin D & B12</li>
+            <li>Cardiac Risk Markers</li>
+            <li>Bone Health Tests</li>
+          </ul>
+          <div class="test-price">₹2,999</div>
+          <button class="book-btn" onclick="bookTest('Senior Citizen Package')">Book Now</button>
         </div>
       </div>
     </div>
   </section>
   
-  <section id="contact" class="contact-section">
+  <section id="locations" class="locations-section">
     <div class="container">
-      <h2>Contact Our Expert Team</h2>
+      <div class="section-header">
+        <h2>Our Locations</h2>
+        <p>Visit us or book home collection service</p>
+      </div>
+      <div class="locations-grid">
+        <div class="location-card">
+          <h3>📍 Mysore Branch</h3>
+          <div class="location-info">
+            <p><strong>Address:</strong> Mysore, Karnataka</p>
+            <p><strong>Phone:</strong> 7760749144 / 9902811332</p>
+            <p><strong>Email:</strong> tejasanner4@gmail.com</p>
+            <p><strong>Hours:</strong> Mon-Sat: 8:00 AM - 8:00 PM</p>
+            <p><strong></strong> Sunday: 9:00 AM - 2:00 PM</p>
+          </div>
+          <button class="book-btn" onclick="bookLocation('Mysore')">Book Home Collection - Mysore</button>
+        </div>
+        
+        <div class="location-card">
+          <h3>📍 Harihara Branch</h3>
+          <div class="location-info">
+            <p><strong>Address:</strong> Harihara, Karnataka</p>
+            <p><strong>Phone:</strong> 7760749144 / 9902811332</p>
+            <p><strong>Email:</strong> kp246248@gmail.com</p>
+            <p><strong>Hours:</strong> Mon-Sat: 8:00 AM - 8:00 PM</p>
+            <p><strong></strong> Sunday: 9:00 AM - 2:00 PM</p>
+          </div>
+          <button class="book-btn" onclick="bookLocation('Harihara')">Book Home Collection - Harihara</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="team" class="team-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Expert Team</h2>
+        <p>Qualified scientific technicians at your service</p>
+      </div>
       <div class="team-grid">
         <div class="team-card">
           <div class="team-icon">👨‍⚕️</div>
@@ -139,6 +311,7 @@
           <p class="role">Scientific Technician</p>
           <p>📞 7760749144</p>
           <p>✉️ tejasanner4@gmail.com</p>
+          <p>📍 Mysore Branch</p>
         </div>
         
         <div class="team-card">
@@ -147,28 +320,137 @@
           <p class="role">Scientific Technician</p>
           <p>📞 9902811332</p>
           <p>✉️ kp246248@gmail.com</p>
+          <p>📍 Harihara Branch</p>
         </div>
       </div>
-      
-      <div class="info-box">
-        <p><strong>📍 Location:</strong> Mysore, Karnataka, India</p>
-        <p><strong>🕐 Working Hours:</strong> Monday-Saturday: 8:00 AM - 8:00 PM | Sunday: 9:00 AM - 2:00 PM</p>
+    </div>
+  </section>
+  
+  <section id="book" class="booking-section">
+    <div class="container">
+      <h2>Book Your Test Now</h2>
+      <p>Fill the form below and we'll contact you shortly</p>
+      <div class="booking-form">
+        <form id="bookingForm">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="name" required placeholder="Enter your name">
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" id="phone" required placeholder="Enter your phone number">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+          </div>
+          <div class="form-group">
+            <label>Select Location *</label>
+            <select id="location" required>
+              <option value="">Choose location</option>
+              <option value="Mysore">Mysore</option>
+              <option value="Harihara">Harihara</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Select Test *</label>
+            <select id="test" required>
+              <option value="">Choose test</option>
+              <option value="CBC">Complete Blood Count - ₹299</option>
+              <option value="Blood Sugar">Blood Sugar Package - ₹499</option>
+              <option value="Lipid Profile">Lipid Profile - ₹599</option>
+              <option value="Kidney Function">Kidney Function Tests - ₹699</option>
+              <option value="Liver Function">Liver Function Tests - ₹799</option>
+              <option value="Thyroid Profile">Thyroid Profile - ₹899</option>
+              <option value="Full Body">Full Body Checkup - ₹1,999</option>
+              <option value="Senior Citizen">Senior Citizen Package - ₹2,999</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Preferred Date & Time</label>
+            <input type="datetime-local" id="datetime">
+          </div>
+          <div class="form-group">
+            <label>Additional Message</label>
+            <textarea id="message" rows="3" placeholder="Any special requirements?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Booking Request</button>
+        </form>
       </div>
     </div>
   </section>
   
   <footer>
     <div class="container">
-      <p>© 2024 Healthcare Medical Laboratory Service, Mysore. All rights reserved.</p>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Healthcare Medical Laboratory</h3>
+          <p>Trusted diagnostics for better health</p>
+          <p>Serving Mysore & Harihara</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <p><a href="#tests" style="color: white; text-decoration: none;">Blood Tests</a></p>
+          <p><a href="#locations" style="color: white; text-decoration: none;">Locations</a></p>
+          <p><a href="#book" style="color: white; text-decoration: none;">Book Now</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>📞 7760749144 / 9902811332</p>
+          <p>✉️ tejasanner4@gmail.com</p>
+          <p>✉️ kp246248@gmail.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Healthcare Medical Laboratory Service. All rights reserved.</p>
+      </div>
     </div>
   </footer>
   
   <script>
+    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       });
+    });
+    
+    // Book test function
+    function bookTest(testName) {
+      document.getElementById('test').value = testName;
+      document.querySelector('#book').scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Book location function
+    function bookLocation(locationName) {
+      document.getElementById('location').value = locationName;
+      document.querySelector('#book').scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Form submission
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const location = document.getElementById('location').value;
+      const test = document.getElementById('test').value;
+      
+      alert(`Thank you ${name}! Your booking request has been received.\n\nLocation: ${location}\nTest: ${test}\nPhone: ${phone}\n\nOur team will contact you shortly to confirm your appointment.`);
+      this.reset();
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(30, 58, 95, 0.98)';
+      } else {
+        navbar.style.background = '#1e3a5f';
+      }
     });
   </script>
 </body>
